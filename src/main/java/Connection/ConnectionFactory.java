@@ -65,4 +65,12 @@ public class ConnectionFactory {
             }
         }
     }
+
+    public static void connectAndExecute(String sql) throws SQLException {
+        Connection connection = getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.executeUpdate();
+        close(statement);
+        close(connection);
+    }
 }

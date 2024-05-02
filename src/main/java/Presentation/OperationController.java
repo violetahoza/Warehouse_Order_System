@@ -4,30 +4,39 @@ import javax.swing.*;
 import java.awt.*;
 
 public class OperationController<T> extends JFrame {
-    JButton add, edit, delete, viewAll;
+    JButton add, edit, delete, view;
     public OperationController(Class<T> tClass){
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setLayout(new FlowLayout());
+        this.setLocationRelativeTo(null);
+        this.setLayout(new GridLayout(4, 1));
+        this.setPreferredSize(new Dimension(350, 200));
+        this.setTitle(tClass.getSimpleName() + " operations");
 
-        add = new JButton("New " + tClass.getSimpleName());
+        add = new JButton("Add " + tClass.getSimpleName());
         edit = new JButton("Edit " + tClass.getSimpleName());
         delete = new JButton("Delete " + tClass.getSimpleName());
-        viewAll = new JButton("View all " + tClass.getSimpleName() + "s");
+        view = new JButton("View " + tClass.getSimpleName() + "s");
 
         add.addActionListener(e -> handleOperation("Add", tClass));
         edit.addActionListener(e -> handleOperation("Edit", tClass));
         delete.addActionListener(e -> handleOperation("Delete", tClass));
-        viewAll.addActionListener(e -> handleOperation("ViewAll", tClass));
+        view.addActionListener(e -> handleOperation("View", tClass));
+
+        StartController.customizeComponent(add);
+        StartController.customizeComponent(edit);
+        StartController.customizeComponent(view);
+        StartController.customizeComponent(delete);
 
         this.add(add);
         this.add(edit);
         this.add(delete);
-        this.add(viewAll);
+        this.add(view);
 
         this.setVisible(true);
+        this.setResizable(false);
         this.pack();
     }
-    private void handleOperation(String operation, Class<?> type) {
+    private void handleOperation(String operation, Class<T> type) {
         switch (operation) {
             case "Add":
                 new AddController<>(type);
@@ -38,11 +47,12 @@ public class OperationController<T> extends JFrame {
             case "Delete":
                 new DeleteController<>(type);
                 break;
-            case "ViewAll":
-                new TableController<>(type);
+            case "View":
+                new ViewAllController<>(type);
                 break;
             default:
                 break;
         }
     }
+
 }
