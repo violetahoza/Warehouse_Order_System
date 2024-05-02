@@ -54,5 +54,4 @@ public class OperationController<T> extends JFrame {
                 break;
         }
     }
-
 }
