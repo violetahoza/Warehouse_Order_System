@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class OrderController extends JFrame {
     private JComboBox clientsBox, productsBox;
@@ -35,8 +36,13 @@ public class OrderController extends JFrame {
         submit.addActionListener(e -> {
             Client client = clients.get(clientsBox.getSelectedIndex());
             Product product = products.get(productsBox.getSelectedIndex());
-
-            OrderBLL orderBLL = new OrderBLL(client.getId(), product.getId(), Integer.parseInt(quantity.getText()));
+            if(!NumberUtils.isNumber(quantity.getText()))
+                throw new NumberFormatException("The quantity must be a natural number!");
+            else if (Integer.parseInt(quantity.getText()) <= 0) {
+                AddController.showErrorDialog("The quantity must be greater than 0!", "Input error");
+                throw new IllegalArgumentException("The quantity must be greater than 0!");
+            }
+            OrderBLL orderBLL = new OrderBLL();
             Order order = new Order(client.getId(), product.getId(), Integer.parseInt(quantity.getText()));
             try {
                 if(orderBLL.insert(order, product)){
@@ -58,7 +64,7 @@ public class OrderController extends JFrame {
         this.setLayout(new BorderLayout());
 
         JPanel inputPanel = new JPanel(new GridLayout(4, 1));
-        inputPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        inputPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
         inputPanel.setBackground(new Color(200, 160, 255));
 
         clientsBox = new JComboBox(clientsList);
@@ -68,24 +74,14 @@ public class OrderController extends JFrame {
         JLabel productLabel = new JLabel("Select Product:");
         JLabel quantityLabel = new JLabel("Enter Quantity:");
 
-        StartController.customizeComponent(clientLabel);
-        StartController.customizeComponent(productLabel);
-        StartController.customizeComponent(quantityLabel);
-        StartController.customizeComponent(clientsBox);
-        StartController.customizeComponent(productsBox);
-        StartController.customizeComponent(quantity);
-        StartController.customizeComponent(submit);
-
-        inputPanel.add(clientLabel);
-        inputPanel.add(clientsBox);
-        inputPanel.add(productLabel);
-        inputPanel.add(productsBox);
-        inputPanel.add(quantityLabel);
-        inputPanel.add(quantity);
+        AddController.addRow(inputPanel, clientLabel, clientsBox);
+        AddController.addRow(inputPanel, productLabel, productsBox);
+        AddController.addRow(inputPanel, quantityLabel, quantity);
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 15, 0));
         buttonPanel.setBackground(new Color(200, 160, 255));
+        StartController.customizeComponent(submit);
         buttonPanel.add(submit);
 
         add(inputPanel, BorderLayout.CENTER);
@@ -95,5 +91,4 @@ public class OrderController extends JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-
 }

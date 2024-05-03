@@ -2,4 +2,5 @@ package Model;
 
 import java.time.LocalDateTime;
 
-public record Bill(int orderId, Client client, Product product, double price, LocalDateTime timestamp) {}
+ // A record representing a bill generated for a purchase.
+public record Bill(int orderId, Client client, Product product, double amount, LocalDateTime timestamp) {}

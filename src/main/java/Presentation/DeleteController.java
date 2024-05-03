@@ -25,7 +25,7 @@ public class DeleteController<T> extends JFrame {
         String[] array = new String[list.size()];
         for(T object : list)
             array[list.indexOf(object)] = object.toString();
-        deleteView(array);
+        deleteView(array, tClass.getSimpleName());
         List<T> finalList = list;
         delete.addActionListener(e -> handleDeleteButton(finalList, tClass));
     }
@@ -43,11 +43,11 @@ public class DeleteController<T> extends JFrame {
         }
     }
 
-    private void deleteView(String[] objects){
+    private void deleteView(String[] objects, String tclass){
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLayout(new GridLayout(2,1));
-        this.setTitle("Delete object");
+        this.setTitle("Delete " + tclass);
         comboBox = new JComboBox(objects);
         StartController.customizeComponent(comboBox);
 

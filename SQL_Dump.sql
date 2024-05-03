@@ -39,7 +39,7 @@ CREATE TABLE `client` (
 
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
-INSERT INTO `client` VALUES (8696,20,'Andra','Cluj','andra@gmail.com'),(12949,17,'Mara','Bistrita','mara@cnlr.ro'),(18889,21,'Andrei','Cluj','andrei@gmail.com'),(24114,21,'Laura','','laura@yahoo.com'),(36949,20,'Ana','Cluj','ana@yahoo.com'),(37159,19,'Violeta','Cluj','vio@yahoo.com');
+INSERT INTO `client` VALUES (8696,20,'Andra','Cluj','andra@gmail.com'),(12949,16,'Mara','Bistrita','mara@cnlr.ro'),(18889,21,'Andrei','Cluj','andrei@gmail.com'),(24114,21,'Laura','','laura@yahoo.com'),(36949,20,'Ana','Cluj','ana@yahoo.com'),(37159,19,'Violeta','Cluj','vio@yahoo.com'),(47535,22,'Anca','Cluj','ancuta@yahoo.com');
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `order` (
   KEY `productID_idx` (`productID`),
   CONSTRAINT `clientID` FOREIGN KEY (`clientID`) REFERENCES `client` (`id`) ON DELETE CASCADE,
   CONSTRAINT `productID` FOREIGN KEY (`productID`) REFERENCES `product` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=43113 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49552 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (24114,45848,3,3628),(12949,1841,5,4465),(36949,1841,3,15248),(18889,8817,1,18140),(12949,1841,5,26968),(8696,8817,2,28416),(12949,1841,5,43112);
+INSERT INTO `order` VALUES (24114,45848,3,3628),(12949,1841,5,4465),(36949,1841,3,15248),(18889,8817,1,18140),(12949,1841,5,26968),(8696,8817,2,28416),(12949,1841,5,43112),(24114,16426,1,49551);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,13 +97,9 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1841,2.15,12,'apple '),(8817,12,3,'watermelon'),(16426,2.5,6,'bread'),(45848,3.99,8,'apple juice');
+INSERT INTO `product` VALUES (1841,2.15,12,'apple '),(7686,45,3,'cake'),(8817,12,3,'watermelon'),(16426,2.5,5,'bread'),(28895,6.99,15,'lemonade'),(45848,3.99,8,'apple juice'),(48418,1.5,22,'water');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'schooldb'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -114,4 +110,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-02 23:11:26
+-- Dump completed on 2024-05-03 12:46:42

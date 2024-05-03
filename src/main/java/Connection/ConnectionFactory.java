@@ -3,7 +3,9 @@ package Connection;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/**
+ * A class that creates a single instance for a connection to the database
+ */
 public class ConnectionFactory {
     private static final Logger LOGGER = Logger.getLogger(ConnectionFactory.class.getName());
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -66,6 +68,10 @@ public class ConnectionFactory {
         }
     }
 
+    /**
+     * @param sql an SQL query that will be executed
+     * @throws SQLException - should be handled locally where this method is used
+     */
     public static void connectAndExecute(String sql) throws SQLException {
         Connection connection = getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);

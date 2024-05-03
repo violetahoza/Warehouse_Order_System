@@ -3,7 +3,16 @@ package BusinessLogic.Validators;
 import Model.Product;
 import Presentation.AddController;
 
+/**
+ * Validator class for validating Product objects.
+ */
 public class ProductValidator implements Validator<Product> {
+    /**
+     * Validates the given Product object.
+     * Checks if the price and quantity are greater than 0. If not, displays an error message and throws an IllegalArgumentException.
+     * @param product The Product object to validate.
+     * @throws IllegalArgumentException If the price or quantity is not greater than 0.
+     */
     @Override
     public void validate(Product product) {
         if(product.getPrice() <= 0){

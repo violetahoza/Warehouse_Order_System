@@ -11,13 +11,27 @@ import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Business Logic Layer (BLL) class for performing operations on Client objects.
+ * Acts as an intermediary between the Presentation layer and DataAccess layer.
+ */
 public class ClientBLL {
+    /** The data access object for interacting with Client objects in the database. */
     ClientDAO clientDAO = new ClientDAO(Client.class);
     public ClientBLL(){}
+
+    /**
+     * Retrieves all clients from the database.
+     * @return A list of all clients in the database.
+     */
     public List<Client> findAll(){
         return clientDAO.findAll();
     }
 
+    /**
+     * Deletes a client from the database.
+     * @param client The client to be deleted.
+     */
     public void delete(Client client) {
         try {
             clientDAO.delete(client);
@@ -26,6 +40,13 @@ public class ClientBLL {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Inserts a new client into the database using the provided fields.
+     * First, it validates the data. Then, it creates a new Client object and sets its attributes based on the provided fields.
+     * Finally, it attempts to insert the client into the database using the ClientDAO. If successful, it shows a success message.
+     * @param fields A list of fields containing information about the client to be inserted.
+     */
     public void insert(List<Object> fields) {
         validateData(fields);
         Client client = new Client();
@@ -42,6 +63,11 @@ public class ClientBLL {
         }
     }
 
+    /**
+     * Edits an existing client in the database.
+     * @param fields The list of fields containing updated client information.
+     * @param client The client object to be updated.
+     */
     public void edit(List<Object> fields, Client client) {
         validateData(fields);
         client.setId((int) fields.get(0));
@@ -56,6 +82,10 @@ public class ClientBLL {
             e.printStackTrace();
         }
     }
+    /**
+     * Validates client data before performing operations on the database.
+     * @param fields The list of fields containing client information.
+     */
     public void validateData(List<Object> fields){
         if (fields.size() != 5) {
             throw new IllegalArgumentException("Invalid number of fields for Client object");

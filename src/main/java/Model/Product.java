@@ -1,5 +1,7 @@
 package Model;
-
+/**
+ * Represents a product entity.
+ */
 public class Product {
     private int id, quantity;
     private double price;
@@ -25,22 +27,19 @@ public class Product {
     public void setId(int id) {
         this.id = id;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
-
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
     public int getQuantity() {
         return quantity;
     }
+    @Override
     public String toString(){
         return id + " | " + name + " | " + price + " | " + quantity;
     }

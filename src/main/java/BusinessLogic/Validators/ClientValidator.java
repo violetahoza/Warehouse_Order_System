@@ -3,6 +3,10 @@ package BusinessLogic.Validators;
 import Model.Client;
 import Presentation.AddController;
 
+/**
+ * Validator class for validating Client objects.
+ * It ensures that the client's age is greater than 0 and validates the client's email.
+ */
 public class ClientValidator implements Validator<Client> {
     @Override
     public void validate(Client client) {

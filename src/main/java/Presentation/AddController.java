@@ -26,27 +26,18 @@ public class AddController<T> extends JFrame {
         panel.setBackground(new Color(220, 200, 250));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 10, 10, 10));
 
+        nameLabel = new JLabel("Insert " + type + " name: ");
         if (type.equals("Client")) {
             panel.setLayout(new GridLayout(5, 2));
-            nameLabel = new JLabel("Insert client name: ");
             label1 = new JLabel("Insert age: ");
             label2 = new JLabel("Insert address: ");
             label3 = new JLabel("Insert email: ");
         } else if (type.equals("Product")) {
             panel.setLayout(new GridLayout(4, 2));
-            nameLabel = new JLabel("Insert product name: ");
             label1 = new JLabel("Insert price: ");
             label2 = new JLabel("Insert quantity");
         }
         this.add(panel);
-        submit.addActionListener(e -> {
-            try {
-                handleAddOperation(tClass);
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
         StartController.customizeComponent(submit);
         addRow(panel, nameLabel, nametf);
         addRow(panel, label1, tf1);
@@ -54,6 +45,14 @@ public class AddController<T> extends JFrame {
         if (type.equals("Client")) {
             addRow(panel, label3, tf3);
         }
+
+        submit.addActionListener(e -> {
+            try {
+                handleAddOperation(tClass);
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setBackground(new Color(200, 160, 255));
@@ -96,7 +95,7 @@ public class AddController<T> extends JFrame {
         }
         this.dispose();
     }
-    public static void addRow(JPanel panel, JLabel label, JTextField textField) {
+    public static void addRow(JPanel panel, JLabel label, JComponent textField) {
         StartController.customizeComponent(label);
         StartController.customizeComponent(textField);
         panel.add(label);

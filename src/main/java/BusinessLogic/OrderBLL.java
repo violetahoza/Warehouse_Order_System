@@ -8,18 +8,22 @@ import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-
+/**
+ * Business Logic class for handling operations related to orders.
+ * It provides functionalities for inserting new orders into the database.
+ */
 public class OrderBLL {
     OrderDAO orderDAO = new OrderDAO(Order.class);
     public OrderBLL(){}
 
-    public OrderBLL(int client, int product, int quantity) throws NumberFormatException{
-        if(quantity <= 0)
-        {
-            AddController.showErrorDialog("The quantity must be greater than 0!", "Input error");
-            throw new IllegalArgumentException("The quantity must be greater than 0!");
-        }
-    }
+    /**
+     * Inserts a new order into the database if the quantity is valid. If the order is successfully inserted, it displays a success message.
+     * Additionally, it creates a bill for the order and logs it to a file.
+     * @param order The order to be inserted.
+     * @param product The product associated with the order.
+     * @return true if the order was successfully inserted, false otherwise.
+     * @throws SQLException If an SQL error occurs while interacting with the database.
+     */
     public boolean insert(Order order, Product product) throws SQLException {
         if(order.getQuantity() != 0 && order.getQuantity() <= product.getQuantity()) {
             orderDAO.insert(order);

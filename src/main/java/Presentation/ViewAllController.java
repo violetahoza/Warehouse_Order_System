@@ -22,13 +22,22 @@ public class ViewAllController<T> extends JFrame {
         } else if(tClass.isAssignableFrom(Client.class)) {
             list = (List<T>) clientBLL.findAll();
         }
+        generateTable(list);
+    }
 
+    // This method generates a table view based on the provided list of entities. It takes a list of entities of type T as input.
+    private void generateTable(List<T> list){
+        Class<?> tClass = list.get(0).getClass(); // Get the class of the entities in the list
+
+        // Get the names of the fields of the class
         String[] columnNames = new String[tClass.getDeclaredFields().length];
         for(int i = 0; i < tClass.getDeclaredFields().length; i++){
             columnNames[i] = tClass.getDeclaredFields()[i].getName();
         }
 
+        // Initialize a 2D array to hold the data for the table
         Object[][] objects = new Object[list.size()][tClass.getDeclaredFields().length];
+        // Populate the 2D array with data from the list
         for(int i = 0; i < list.size(); i++){
             for(int j = 0; j < tClass.getDeclaredFields().length;j ++){
                 Field field = tClass.getDeclaredFields()[j];
@@ -40,10 +49,10 @@ public class ViewAllController<T> extends JFrame {
                 }
             }
         }
-        setupView(objects, columnNames);
+        setupView(objects, columnNames, tClass.getSimpleName()); // Set up the view with the generated data
     }
-    private void setupView(Object[][] data, String[] columnNames){
-        this.setTitle("View objects");
+    private void setupView(Object[][] data, String[] columnNames, String tClass){
+        this.setTitle("View " + tClass + "s");
         this.setLocationRelativeTo(null);
         table = new JTable(data, columnNames);
         table.setPreferredScrollableViewportSize(new Dimension(600, 100));

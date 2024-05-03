@@ -1,5 +1,8 @@
 package Model;
 
+/**
+ * Represents a client entity.
+ */
 public class Client {
     private int id, age;
     private String name, address, email;
@@ -42,6 +45,7 @@ public class Client {
     public void setId(int id) {
         this.id = id;
     }
+    @Override
     public String toString(){
         return id + " | " + name + " | " + age + " | " + address + " | " + email;
     }
