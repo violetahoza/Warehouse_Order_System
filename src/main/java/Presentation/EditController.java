@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * EditController class represents the window for editing objects of a specified type.
+ * @param <T> The type of object to edit.
+ */
 public class EditController<T> extends JFrame {
     private JLabel nameLabel, label1, label2, label3;
     private JTextField nametf = new JTextField(), tf1 = new JTextField(), tf2 = new JTextField(), tf3 = new JTextField();
@@ -35,6 +39,13 @@ public class EditController<T> extends JFrame {
         List<T> finalList = list;
         submit.addActionListener(e -> handleSubmitButton(finalList, tClass));
     }
+
+
+    /**
+     * Handles the submit button action by updating the selected object's attributes.
+     * @param list   The list of objects.
+     * @param tClass The class type of the object.
+     */
     private void handleSubmitButton(List<T> list, Class<T> tClass) {
         int selectedIndex = comboBox.getSelectedIndex();
         if (selectedIndex != -1) {

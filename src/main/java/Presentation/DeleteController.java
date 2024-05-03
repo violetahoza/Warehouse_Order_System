@@ -9,6 +9,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * DeleteController class represents the window for deleting objects of a specified type.
+ * @param <T> The type of object to delete.
+ */
 public class DeleteController<T> extends JFrame {
     private JButton delete = new JButton("Delete");
     private JComboBox comboBox;
@@ -30,6 +34,11 @@ public class DeleteController<T> extends JFrame {
         delete.addActionListener(e -> handleDeleteButton(finalList, tClass));
     }
 
+    /**
+     * Handles the delete button action by removing the selected object from the list and database.
+     * @param list   The list of objects.
+     * @param tClass The class type of the object.
+     */
     private void handleDeleteButton(List<T> list, Class<T> tClass) {
         int selectedIndex = comboBox.getSelectedIndex();
         if (selectedIndex != -1) {

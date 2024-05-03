@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  * It provides functionalities for inserting new orders into the database.
  */
 public class OrderBLL {
-    OrderDAO orderDAO = new OrderDAO(Order.class);
+    OrderDAO orderDAO = new OrderDAO(Order.class); // the data access object for interacting with the order database table
     public OrderBLL(){}
 
     /**
@@ -25,15 +25,17 @@ public class OrderBLL {
      * @throws SQLException If an SQL error occurs while interacting with the database.
      */
     public boolean insert(Order order, Product product) throws SQLException {
+        // Check if the order quantity is valid and does not exceed the available stock
         if(order.getQuantity() != 0 && order.getQuantity() <= product.getQuantity()) {
-            orderDAO.insert(order);
+            orderDAO.insert(order); // insert the order into the database
             AddController.showMessageDialog("The order was placed successfully!", "Success");
 
             ClientBLL clientBLL = new ClientBLL();
-            Client client = clientBLL.clientDAO.findById(order.getClientID());
+            Client client = clientBLL.clientDAO.findById(order.getClientID()); // retrieve client information
+            // generate a bill for the order
             Bill bill = new Bill(order.getOrderID(), client, product, (double) product.getPrice() * order.getQuantity(), LocalDateTime.now());
             try {
-                Log.appendBillToFile(bill);
+                Log.appendBillToFile(bill); // log the bill to a file
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

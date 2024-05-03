@@ -10,11 +10,20 @@ import java.awt.*;
 import java.lang.reflect.Field;
 import java.util.List;
 
+/**
+ * ViewAllController class represents the window for viewing all entities of a specified type in a table format.
+ * @param <T> The type of entity to view.
+ */
 public class ViewAllController<T> extends JFrame {
-    JTable table;
-    ProductBLL productBLL = new ProductBLL();
-    ClientBLL clientBLL = new ClientBLL();
+    JTable table; // table for displaying the entities
+    ProductBLL productBLL = new ProductBLL(); // Business Logic Layer for Product objects
+    ClientBLL clientBLL = new ClientBLL(); // Business Logic Layer for Client objects
 
+    /**
+     * Constructs a ViewAllController object.
+     * Retrieves a list of entities of the specified type from the database and generates a table view.
+     * @param tClass The class type of the entity.
+     */
     public ViewAllController(Class<T> tClass){
         List<T> list = null;
         if(tClass.isAssignableFrom(Product.class)) {
@@ -25,7 +34,10 @@ public class ViewAllController<T> extends JFrame {
         generateTable(list);
     }
 
-    // This method generates a table view based on the provided list of entities. It takes a list of entities of type T as input.
+    /**
+     * Generates a table view based on the provided list of entities.
+     * @param list The list of entities.
+     */
     private void generateTable(List<T> list){
         Class<?> tClass = list.get(0).getClass(); // Get the class of the entities in the list
 

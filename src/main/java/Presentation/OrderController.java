@@ -17,8 +17,8 @@ public class OrderController extends JFrame {
     private JComboBox clientsBox, productsBox;
     private JTextField quantity = new JTextField();
     private JButton submit = new JButton("Submit");
-    private ClientBLL clientBLL = new ClientBLL();
-    private ProductBLL productBLL = new ProductBLL();
+    private ClientBLL clientBLL = new ClientBLL(); // Business Logic Layer object for handling client-related operations
+    private ProductBLL productBLL = new ProductBLL(); // Business Logic Layer object for handling product-related operations
 
     public OrderController(){
         List<Client> clients = clientBLL.findAll();

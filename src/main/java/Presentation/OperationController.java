@@ -3,6 +3,10 @@ package Presentation;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * OperationController class represents the window for performing CRUD (Create, Read, Update, Delete) operations on a specific type of object.
+ * @param <T> The type of object on which the operations are performed.
+ */
 public class OperationController<T> extends JFrame {
     JButton add, edit, delete, view;
     public OperationController(Class<T> tClass){
@@ -36,6 +40,12 @@ public class OperationController<T> extends JFrame {
         this.setResizable(false);
         this.pack();
     }
+
+    /**
+     * Handles the specified operation on the given type of object.
+     * @param operation The operation to perform (e.g., Add, Edit, Delete, View).
+     * @param type The class type of the object on which the operation is performed.
+     */
     private void handleOperation(String operation, Class<T> type) {
         switch (operation) {
             case "Add":

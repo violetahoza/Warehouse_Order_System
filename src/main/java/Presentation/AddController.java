@@ -11,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * AddController class represents the window for adding new objects of a specified type.
+ * @param <T> The type of object to add.
+ */
 public class AddController<T> extends JFrame {
     private JLabel nameLabel, label1, label2, label3;
     private JTextField nametf = new JTextField(), tf1 = new JTextField(), tf2 = new JTextField(), tf3 = new JTextField();
