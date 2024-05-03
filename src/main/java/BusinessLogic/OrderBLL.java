@@ -1,6 +1,7 @@
 package BusinessLogic;
 
 import DataAccess.AbstractDAO;
+import DataAccess.BillDAO;
 import DataAccess.OrderDAO;
 import Model.*;
 import Presentation.AddController;
@@ -36,6 +37,8 @@ public class OrderBLL {
             Bill bill = new Bill(order.getOrderID(), client, product, (double) product.getPrice() * order.getQuantity(), LocalDateTime.now());
             try {
                 Log.appendBillToFile(bill); // log the bill to a file
+                BillDAO billDAO = new BillDAO();
+                billDAO.insertBill(bill);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

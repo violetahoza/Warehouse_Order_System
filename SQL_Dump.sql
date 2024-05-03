@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `bills`
+--
+
+DROP TABLE IF EXISTS `bills`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bills` (
+  `client` varchar(55) NOT NULL,
+  `product` varchar(45) NOT NULL,
+  `amount` double NOT NULL,
+  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bills`
+--
+
+LOCK TABLES `bills` WRITE;
+/*!40000 ALTER TABLE `bills` DISABLE KEYS */;
+INSERT INTO `bills` VALUES ('Andrei','lemonade',13.98,'2024-05-03 17:40:29'),('Violeta','cake',45,'2024-05-03 17:41:05');
+/*!40000 ALTER TABLE `bills` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `client`
 --
 
@@ -70,7 +95,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (24114,45848,3,3628),(12949,1841,5,4465),(36949,1841,3,15248),(18889,8817,1,18140),(12949,1841,5,26968),(8696,8817,2,28416),(12949,1841,5,43112),(24114,16426,1,49551);
+INSERT INTO `order` VALUES (24114,45848,3,3628),(12949,1841,5,4465),(36949,1841,3,15248),(18889,8817,1,18140),(12949,1841,5,26968),(8696,8817,2,28416),(8696,1841,3,29617),(37159,7686,1,35509),(18889,28895,2,39453),(12949,1841,5,43112),(24114,16426,1,49551);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +122,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1841,2.15,12,'apple '),(7686,45,3,'cake'),(8817,12,3,'watermelon'),(16426,2.5,5,'bread'),(28895,6.99,15,'lemonade'),(45848,3.99,8,'apple juice'),(48418,1.5,22,'water');
+INSERT INTO `product` VALUES (1841,2.15,12,'apple '),(7686,45,2,'cake'),(8817,12,3,'watermelon'),(16426,2.5,5,'bread'),(28895,6.99,13,'lemonade'),(45848,3.99,8,'apple juice'),(48418,1.5,22,'water');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -110,4 +135,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-03 12:46:42
+-- Dump completed on 2024-05-03 20:42:13
