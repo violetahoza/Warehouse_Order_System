@@ -5,6 +5,7 @@ import Model.Bill;
 
 import java.sql.SQLException;
 
+/** The BillDAO class provides methods to interact with the database regarding bill entities.*/
 public class BillDAO {
     public BillDAO(){}
 

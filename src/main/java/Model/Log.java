@@ -6,9 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Represents a log utility for writing bill information to a file.
- */
+/** Represents a log utility for writing bill information to a file.*/
 public class Log {
     private static final String LOG_FILE_PATH = "bills.log";
 

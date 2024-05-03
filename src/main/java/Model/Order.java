@@ -2,9 +2,7 @@ package Model;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Represents an order entity.
- */
+/** Represents an order entity.*/
 public class Order {
     private int orderID, clientID, productID, quantity;
 

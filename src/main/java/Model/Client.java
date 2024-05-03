@@ -1,8 +1,6 @@
 package Model;
 
-/**
- * Represents a client entity.
- */
+/** Represents a client entity.*/
 public class Client {
     private int id, age;
     private String name, address, email;

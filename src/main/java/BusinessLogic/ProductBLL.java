@@ -9,10 +9,7 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Business Logic class for handling operations related to products.
- * It provides functionalities for inserting, updating, deleting, and finding products in the database.
- */
+/** Business Logic class for handling operations related to products. It provides functionalities for inserting, updating, deleting, and finding products in the database.*/
 public class ProductBLL {
     ProductDAO productDAO = new ProductDAO(Product.class);
 

@@ -11,10 +11,7 @@ import java.awt.*;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Business Logic Layer (BLL) class for performing operations on Client objects.
- * Acts as an intermediary between the Presentation layer and DataAccess layer.
- */
+/** Business Logic Layer (BLL) class for performing operations on Client objects. Acts as an intermediary between the Presentation layer and DataAccess layer.*/
 public class ClientBLL {
     /** The data access object for interacting with Client objects in the database. */
     ClientDAO clientDAO = new ClientDAO(Client.class);

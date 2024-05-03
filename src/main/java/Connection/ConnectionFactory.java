@@ -3,9 +3,7 @@ package Connection;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- * A class that creates a single instance for a connection to the database
- */
+/** A class that creates a single instance for a connection to the database. */
 public class ConnectionFactory {
     private static final Logger LOGGER = Logger.getLogger(ConnectionFactory.class.getName());
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";

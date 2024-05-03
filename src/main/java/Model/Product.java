@@ -1,7 +1,5 @@
 package Model;
-/**
- * Represents a product entity.
- */
+/** Represents a product entity.*/
 public class Product {
     private int id, quantity;
     private double price;

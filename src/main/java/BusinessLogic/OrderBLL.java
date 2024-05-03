@@ -9,10 +9,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-/**
- * Business Logic class for handling operations related to orders.
- * It provides functionalities for inserting new orders into the database.
- */
+/** Business Logic class for handling operations related to orders. It provides functionalities for inserting new orders into the database.*/
 public class OrderBLL {
     OrderDAO orderDAO = new OrderDAO(Order.class); // the data access object for interacting with the order database table
     public OrderBLL(){}
