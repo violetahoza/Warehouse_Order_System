@@ -1,7 +1,7 @@
-Application
-BusinessLogic
-BusinessLogic.Validators
-Connection
-DataAccess
-Model
-Presentation
+application
+businessLogic
+businessLogic.validators
+connection
+dataAccess
+model
+presentation
