@@ -45,7 +45,7 @@ public class OrderController extends JFrame {
             OrderBLL orderBLL = new OrderBLL();
             Order order = new Order(client.getId(), product.getId(), Integer.parseInt(quantity.getText()));
             try {
-                if(orderBLL.insert(order, product)){
+                if(orderBLL.insert(order)){
                     product.setQuantity(product.getQuantity() - order.getQuantity());
                     productBLL.update(product);
                     productsBox.removeAllItems();

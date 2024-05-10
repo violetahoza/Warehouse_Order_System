@@ -18,11 +18,12 @@ public class OrderBLL {
      * Inserts a new order into the database if the quantity is valid. If the order is successfully inserted, it displays a success message.
      * Additionally, it creates a bill for the order and logs it to a file.
      * @param order The order to be inserted.
-     * @param product The product associated with the order.
      * @return true if the order was successfully inserted, false otherwise.
      * @throws SQLException If an SQL error occurs while interacting with the database.
      */
-    public boolean insert(Order order, Product product) throws SQLException {
+    public boolean insert(Order order) throws SQLException {
+        ProductBLL productBLL = new ProductBLL();
+        Product product = productBLL.productDAO.findById(order.getProductID());
         // Check if the order quantity is valid and does not exceed the available stock
         if(order.getQuantity() != 0 && order.getQuantity() <= product.getQuantity()) {
             orderDAO.insert(order); // insert the order into the database

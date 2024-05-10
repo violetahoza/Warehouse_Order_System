@@ -21,4 +21,8 @@ public class Order {
     public int getClientID() {
         return clientID;
     }
+
+    public int getProductID() {
+        return productID;
+    }
 }
