@@ -42,7 +42,7 @@ public class OrderBLL {
             return true;
         } else {
             AddController.showErrorDialog("Under-stock for " + product.getName() + "\nMax quantity = " + product.getQuantity(), "Under-stock");
-            return false;
+            throw new RuntimeException("Under-stock for " + product.getName() + "\nMax quantity = " + product.getQuantity());
         }
     }
 }

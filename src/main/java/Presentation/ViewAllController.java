@@ -31,14 +31,14 @@ public class ViewAllController<T> extends JFrame {
         } else if(tClass.isAssignableFrom(Client.class)) {
             list = (List<T>) clientBLL.findAll();
         }
-        generateTable(list);
+        setupView(list, tClass.getSimpleName());
     }
 
     /**
      * Generates a table view based on the provided list of entities.
      * @param list The list of entities.
      */
-    private void generateTable(List<T> list){
+    private JTable generateTable(List<T> list){
         Class<?> tClass = list.get(0).getClass(); // Get the class of the entities in the list
 
         // Get the names of the fields of the class
@@ -61,12 +61,8 @@ public class ViewAllController<T> extends JFrame {
                 }
             }
         }
-        setupView(objects, columnNames, tClass.getSimpleName()); // Set up the view with the generated data
-    }
-    private void setupView(Object[][] data, String[] columnNames, String tClass){
-        this.setTitle("View " + tClass + "s");
-        this.setLocationRelativeTo(null);
-        table = new JTable(data, columnNames);
+
+        JTable table = new JTable(objects, columnNames);
         table.setPreferredScrollableViewportSize(new Dimension(600, 100));
         table.setFillsViewportHeight(true);
         table.setDefaultEditor(Object.class, null);
@@ -77,6 +73,14 @@ public class ViewAllController<T> extends JFrame {
         header.setForeground(Color.WHITE);
         header.setFont(new Font("Arial", Font.BOLD, 14));
         table.setSelectionBackground(new Color(200, 160, 255));
+
+        return table;
+    }
+    private void setupView(List<T> list, String tClass){
+        this.setTitle("View " + tClass + "s");
+        this.setLocationRelativeTo(null);
+        table = generateTable(list);
+
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBackground(new Color(200, 160, 255));
 
