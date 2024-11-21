@@ -13,7 +13,6 @@ The Order Management Application is a Java-based system designed to manage custo
 ## Technologies Used
 - Java 11 or higher
 - Spring Boot (for building the application)
-- Hibernate (for ORM and database interaction)
 - MySQL (or any other relational database)
 - Maven (for dependency management)
 - JUnit (for unit testing)
